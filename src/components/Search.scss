@@ -1,0 +1,27 @@
+@use '../base/colors' as color;
+
+.search-container{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 50px;
+    background-color: #433e48;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    position: relative;
+    margin: auto;
+
+    input{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0.2rem;
+        margin-left: 0.2rem;
+        color: color.$text-main;
+    }
+
+    input::placeholder{
+        color: color.$sub;
+    }
+}

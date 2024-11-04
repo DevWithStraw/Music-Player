@@ -1,0 +1,21 @@
+@use '../base/colors' as color;
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    padding: 0 0 1rem 1.2rem;
+    margin-top: 4rem;
+}
+
+h1{
+    color: color.$text-main;
+    font-size: 1.9rem;
+}
+
+h3{
+    color: color.$sub;
+    font-size: 0.9rem;
+}

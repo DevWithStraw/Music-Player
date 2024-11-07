@@ -1,24 +1,22 @@
 import React from "react";
 import "./Search.scss";
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export default function Search({onSearch}) {
-
+export default function Search({ onSearch }) {
   const { data } = useQuery({
     queryKey: ["search"],
     queryFn: () =>
       axios.get("http://localhost:3000/songs").then((res) => res.data),
   });
 
-
-  function songName(input) {
-    const matchedSong = data.filter(
-      (item) => (item.songName.toLowerCase() === input.toLowerCase())
-    );
-    console.log(matchedSong)
-    onSearch(matchedSong);
+  function handleSearch(input) {
+    if (data) {
+      const matchedSongs = data.filter((item) =>
+        item.songName.toLowerCase().startsWith(input.toLowerCase())
+      );
+      onSearch(matchedSongs);
+    }
   }
 
   return (
@@ -27,8 +25,8 @@ export default function Search({onSearch}) {
       <input
         className="poppins-regular"
         type="search"
-        onInput={(event) => songName(event.target.value)}
-        placeholder="Search Song,playlist,artist"
+        onInput={(event) => handleSearch(event.target.value)}
+        placeholder="Search Song, playlist, artist"
       />
     </div>
   );

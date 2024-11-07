@@ -11,7 +11,7 @@
         {
             "id" : 1,
             "imageSrc" : "happy-life",
-            "songName" : "I Like You",
+            "songName" : "Beggining of Life",
             "artist" : "Post Malone, Doja Cat",
             "timeline" : "4:03"
         } 
@@ -19,9 +19,25 @@
         {
             "id" : 2,
             "imageSrc" : "scarecrow",
-            "songName" : "Fountains",
+            "songName" : "Crowd goes Boom",
             "artist" : "Drake, Tems",
             "timeline" : "3:18"
+        } 
+        ,
+        {
+            "id" : 3,
+            "imageSrc" : "fien",
+            "songName" : "Toxic Waste",
+            "artist" : "Temo, Richer",
+            "timeline" : "2:19"
+        } 
+        ,
+        {
+            "id" : 4,
+            "imageSrc" : "happy-life",
+            "songName" : "The Search",
+            "artist" : "NF",
+            "timeline" : "3:51"
         } 
     ]
 }

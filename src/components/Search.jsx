@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Search.scss";
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export let index;
+export default function Search({onSearch}) {
 
-export default function Search() {
   const { data } = useQuery({
     queryKey: ["search"],
     queryFn: () =>
@@ -15,11 +14,11 @@ export default function Search() {
 
 
   function songName(input) {
-    const matchedSong = data.find((item) => item.songName === input);
-
-    if (matchedSong.songName === input) {
-      index = matchedSong;
-    }
+    const matchedSong = data.filter(
+      (item) => (item.songName.toLowerCase() === input.toLowerCase())
+    );
+    console.log(matchedSong)
+    onSearch(matchedSong);
   }
 
   return (

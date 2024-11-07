@@ -5,7 +5,8 @@
             "imageSrc" : "fien",
             "songName" : "Bye Bye",
             "artist" : "Marshmello, Juice WRLD",
-            "timeline" : "2:09"
+            "timeline" : "2:09",
+            "category" : "Recent"
         } 
         ,
         {
@@ -13,7 +14,8 @@
             "imageSrc" : "happy-life",
             "songName" : "Beggining of Life",
             "artist" : "Post Malone, Doja Cat",
-            "timeline" : "4:03"
+            "timeline" : "4:03",
+            "category" : "Recent"
         } 
         ,
         {
@@ -21,7 +23,8 @@
             "imageSrc" : "scarecrow",
             "songName" : "Crowd goes Boom",
             "artist" : "Drake, Tems",
-            "timeline" : "3:18"
+            "timeline" : "3:18",
+            "category" : "Festival"
         } 
         ,
         {
@@ -29,7 +32,8 @@
             "imageSrc" : "fien",
             "songName" : "Toxic Waste",
             "artist" : "Temo, Richer",
-            "timeline" : "2:19"
+            "timeline" : "2:19",
+            "category" : "Top 50"
         } 
         ,
         {
@@ -37,7 +41,8 @@
             "imageSrc" : "happy-life",
             "songName" : "The Search",
             "artist" : "NF",
-            "timeline" : "3:51"
+            "timeline" : "3:51",
+            "category" : "Recent"
         } 
     ]
 }

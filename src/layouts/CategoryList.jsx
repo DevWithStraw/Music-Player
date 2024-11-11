@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CategoryList.scss";
 
-export default function Category({filteredCategory}) {
+export default function Category({ filteredCategory }) {
+  const [activeCategory, setActiveCategory] = useState("Recent");
 
-    const onCategory = (category) => {
-        filteredCategory(category)
-    }
+  const categories = ["Recent", "Top 50", "Chill", "R&B", "Festival"];
+
+  const onCategory = (category) => {
+    setActiveCategory(category);
+    filteredCategory(category);
+  };
 
   return (
     <ul>
-      <li onClick={(event) => onCategory(event.target.textContent)}>Recent</li>
-      <li onClick={(event) => onCategory(event.target.textContent)}>Top 50</li>
-      <li onClick={(event) => onCategory(event.target.textContent)}>Chill</li>
-      <li onClick={(event) => onCategory(event.target.textContent)}>R&B</li>
-      <li onClick={(event) => onCategory(event.target.textContent)}>Festival</li>
+      {categories.map((category) => (
+        <li
+          key={category}
+          className={`poppins-regular ${
+            activeCategory === category ? "active" : ""
+          }`}
+          onClick={() => onCategory(category)}
+        >
+          {category}
+        </li>
+      ))}
     </ul>
   );
 }

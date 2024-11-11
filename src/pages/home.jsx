@@ -1,12 +1,21 @@
 import React, { useState } from "react";
-import axios from "axios";
-import Search from "../components/Search";
-import HeaderTitle from "../layouts/HeaderTitle";
 import "./home.scss";
-import Music from "../components/Music";
-import { useQuery } from "@tanstack/react-query";
+
+import HeaderTitle from "../layouts/HeaderTitle";
 import CategoryList from "../layouts/CategoryList";
+
+import Search from "../components/Search";
+import Music from "../components/Music";
 import Category from "../components/Category";
+
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 function Home() {
   const [filteredSongs, setFilteredSongs] = useState([]);
@@ -23,16 +32,19 @@ function Home() {
       axios.get("http://localhost:3000/songs").then((res) => res.data),
   });
 
-  const {data : filteredCat , refetch , } = useQuery( {
-    refetchInterval : 100,
+  const { data: filteredCat, refetch } = useQuery({
+    refetchInterval: 100,
     queryKey: ["categoryList"],
-    queryFn : () => axios.get(`http://localhost:3000/songs?category=${filteredCategory}`).then((res) => res.data),
-  })
+    queryFn: () =>
+      axios
+        .get(`http://localhost:3000/songs?category=${filteredCategory}`)
+        .then((res) => res.data),
+  });
 
   function handleSearch(filteredData) {
     setFilteredSongs(filteredData);
     refetch;
-    console.log(dataUpdatedAt)
+    console.log(dataUpdatedAt);
   }
 
   function handleCategory(filteredData) {
@@ -43,7 +55,6 @@ function Home() {
   if (isError) return <div>Error: {error.message}</div>;
 
   const songsToDisplay = filteredSongs.length > 0 ? filteredSongs : songs;
-  // const categoryToDisplay = filteredCategory === "" ? filteredCat : filteredCategory;
 
   return (
     <div className="main">
@@ -52,14 +63,23 @@ function Home() {
 
       <CategoryList filteredCategory={handleCategory} />
 
-      {filteredCat?.map((category) => (
-        <Category
-          key={category.id}
-          imageSrc={category.imageSrc}
-          title={category.title}
-          subtitle={category.artist}
-        />
-      ))}
+      <Swiper
+        slidesPerView={2}
+        spaceBetween={100}
+        freeMode={true}
+        modules={[FreeMode]}
+        className="category-swipers"
+      >
+        {filteredCat?.map((category) => (
+          <SwiperSlide key={category.id}>
+            <Category
+              imageSrc={category.imageSrc}
+              title={category.title}
+              subtitle={category.artist}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       {songsToDisplay?.map((music) => (
         <Music

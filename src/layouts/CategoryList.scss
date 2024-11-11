@@ -1,0 +1,12 @@
+@use "../utils/mixins" as *;
+@use "../base/colors" as color;
+
+ul {
+  @include flex(space-evenly, center, row);
+  color: color.$text-main;
+  margin: 1rem 0;
+
+  li.active {
+    border-bottom: 1px solid white;
+  }
+}
